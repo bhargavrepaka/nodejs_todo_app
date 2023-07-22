@@ -45,5 +45,5 @@ export const logout=async (req,res)=>{
         SameSite:"None",
         secure:true
         })
-    .json({sucess:true,message:"user logged out"})
+    .json({sucess:true,message:"user logged Out"})
 }
