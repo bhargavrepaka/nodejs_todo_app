@@ -10,7 +10,7 @@ export const getAllUsers=async (req,res)=>{
 
 export const register=async (req,res,next)=>{ 
     const {name,email,password}=req.body
- 
+    
     const userExits=await User.findOne({email})
     if(userExits){ return next(new ErrorHandler("User already exists",400)) }
 

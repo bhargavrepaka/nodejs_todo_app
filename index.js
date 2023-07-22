@@ -17,10 +17,8 @@ config({
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
-app.use("/api/v1/users",userRouter)
-app.use("/api/v1/tasks",taskRouter)
 app.use(cors({
-    origin:[process.env.FRONTEND_URL],
+    origin:[process.end.FRONTEND_URL,"http://localhost:5173","http://localhost:5177"],
     methods:['GET','POST','PUT','DELETE'],
     credentials:true
 }))
@@ -34,6 +32,8 @@ app.get("/",(req,res)=>{
         running:true
     })
 })
+app.use("/api/v1/users",userRouter)
+app.use("/api/v1/tasks",taskRouter)
 
 app.listen(process.env.PORT,()=>{
     console.log("Listing to server on",process.env.PORT," in ",process.env.NODE_ENV," mode")

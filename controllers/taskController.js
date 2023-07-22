@@ -2,8 +2,9 @@ import ErrorHandler from "../middleware/error.js"
 import {Task} from "../models/task.js"
 import jwt from "jsonwebtoken"
 
-export const newTask= async(req,res)=>{
+export const newTask= async(req,res,next)=>{
     const {title,description}=req.body
+    if(!title || !description) return next(new ErrorHandler("need both fields",404))
     await Task.create({
         title,
         description,
